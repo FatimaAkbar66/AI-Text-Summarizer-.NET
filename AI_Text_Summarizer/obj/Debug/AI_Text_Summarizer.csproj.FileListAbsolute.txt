@@ -10,3 +10,4 @@ C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Te
 C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_.42D4B5CE.Up2Date
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.Form1.resources
