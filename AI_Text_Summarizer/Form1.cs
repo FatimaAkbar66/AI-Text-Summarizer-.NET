@@ -9,13 +9,6 @@ namespace AI_Text_Summarizer
 {
     public partial class Form1 : Form
     {
-        // We use a free Hugging Face Inference API for summarization
-        private readonly string apiUrl = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn";
-
-        // NOTE: You will need a free Hugging Face Token for this to work reliably. 
-        // Get one at huggingface.co -> Settings -> Access Tokens
-        private readonly string apiKey = "YOUR_HUGGINGFACE_API_KEY_HERE";
-
         public Form1()
         {
             InitializeComponent();
@@ -25,18 +18,21 @@ namespace AI_Text_Summarizer
         {
             string inputText = txtInput.Text.Trim();
 
+            // Validate input so the user doesn't send empty text
             if (string.IsNullOrEmpty(inputText) || inputText == "Paste your long article or text here...")
             {
                 MessageBox.Show("Please enter some text to summarize.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            lblStatus.Text = "Status: Processing with AI... Please wait.";
+            // Update UI to show loading state
+            lblStatus.Text = "Status: Processing with Gemini AI... Please wait.";
             btnSummarize.Enabled = false;
-            txtOutput.Text = "";
+            txtOutput.Text = "Generating summary...";
 
             try
             {
+                // Call the API and update the output box
                 string summary = await GetSummaryFromAI(inputText);
                 txtOutput.Text = summary;
                 lblStatus.Text = "Status: Summarization Complete!";
@@ -46,42 +42,53 @@ namespace AI_Text_Summarizer
                 // Fulfills the "Proper error handling" assignment requirement
                 MessageBox.Show($"An error occurred: {ex.Message}", "API Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblStatus.Text = "Status: Error occurred.";
+                txtOutput.Text = "Failed to generate summary.";
             }
             finally
             {
+                // Re-enable the button when done
                 btnSummarize.Enabled = true;
             }
         }
 
         private async Task<string> GetSummaryFromAI(string text)
         {
+            // 1. Put your Gemini API key here
+            string geminiApiKey = "API KEY";
+
+            // 2. We use the blazing-fast Gemini 2.0 Flash model
+            string url = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={geminiApiKey}";
+
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
-
-                // Create the JSON payload
+                // We create the exact JSON structure Google Gemini expects
                 var requestBody = new
                 {
-                    inputs = text,
-                    parameters = new { max_length = 130, min_length = 30, do_sample = false }
+                    contents = new[]
+                    {
+                        new { parts = new[] { new { text = "Summarize the following text concisely in a short paragraph: " + text } } }
+                    }
                 };
 
+                // Serialize our object into a JSON string
                 string jsonBody = Newtonsoft.Json.JsonConvert.SerializeObject(requestBody);
                 StringContent content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
-                // Send POST request
-                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+                // Send the network request
+                HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseString = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Parse the JSON array response from Hugging Face
-                    JArray jsonArray = JArray.Parse(responseString);
-                    return jsonArray[0]["summary_text"].ToString();
+                    // Parse Google's response to extract just the summary text
+                    JObject json = JObject.Parse(responseString);
+                    string summary = json["candidates"][0]["content"]["parts"][0]["text"].ToString();
+                    return summary.Trim();
                 }
                 else
                 {
-                    throw new Exception($"API returned status code {response.StatusCode}. Details: {responseString}");
+                    // Throw custom exception if the API rejects our call
+                    throw new Exception($"Gemini API Error: {response.StatusCode}. Details: {responseString}");
                 }
             }
         }
