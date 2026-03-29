@@ -1,0 +1,9 @@
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\bin\Debug\AI_Text_Summarizer.exe.config
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\bin\Debug\AI_Text_Summarizer.exe
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\bin\Debug\AI_Text_Summarizer.pdb
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.Properties.Resources.resources
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.csproj.GenerateResource.cache
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.exe
+C:\Users\user\source\repos\AI_Text_Summarizer\AI_Text_Summarizer\obj\Debug\AI_Text_Summarizer.pdb
