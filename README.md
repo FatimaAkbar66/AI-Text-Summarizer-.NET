@@ -42,3 +42,7 @@ For security purposes, the actual API Key has been omitted from the public repos
 
 ## 🔄 Version Control & Commits
 This repository strictly follows the parallel commit guidelines required for this coursework. Significant layout adjustments, API troubleshooting maneuvers, and control integrations have been logged systematically. 
+
+| Application UI | AI Output Summary |
+| :---: | :---: |
+| ![UI](./imageUI.png) | ![Output](./output.png) |
