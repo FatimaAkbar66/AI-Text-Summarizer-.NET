@@ -1,6 +1,3 @@
-<img width="775" height="380" alt="imageUI" src="https://github.com/user-attachments/assets/12848cc5-1be5-4635-9a8a-95c0da62c48e" />
-<img width="767" height="384" alt="output" src="https://github.com/user-attachments/assets/09262c0a-abc8-44e6-a3ee-b8fd41a186b4" />
-<img width="775" height="380" alt="imageUI" src="https://github.com/user-attachments/assets/f8099758-f3d9-49ac-9ff1-c215f1801d1e" />
 ﻿# AI Text Summarizer (.NET Windows Forms)
 
 A professional desktop application built using C# and Windows Forms that leverages the Google Gemini 2.5 Flash API to provide instant, highly accurate text summarization. The application features a modern, side-by-side "Soft-UI" layout that allows users to toggle between paragraph and bullet-point summary formats.
@@ -49,8 +46,8 @@ This repository strictly follows the parallel commit guidelines required for thi
 ## Screenshots of Application
 
 <img width="775" height="380" alt="imageUI" src="https://github.com/user-attachments/assets/664137a5-5ffd-4f50-a08e-54e499654c30" />
-### Output:
 
+## Output:
 <img width="767" height="384" alt="output" src="https://github.com/user-attachments/assets/50d1731e-8d5d-4469-8fbd-116b5f7efde4" />
 
 
